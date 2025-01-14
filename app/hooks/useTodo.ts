@@ -3,7 +3,7 @@ import useLocalStorage from 'use-local-storage';
 import { v4 as uuidv4 } from 'uuid';
 import { Todo } from '../types';
 
-const handleInvalidIndex = (index: number, message = 'Todo ID not found') => {
+const handleInvalidId = (index: number, message = 'Todo ID not found') => {
   if (index < 0) {
     console.error(message);
     return true;
@@ -25,7 +25,7 @@ const useTodo = () => {
 
   const deleteTodo = (id: string) => {
     const index = todos.findIndex((item) => item.id === id);
-    if (handleInvalidIndex(index)) return;
+    if (handleInvalidId(index)) return;
 
     const updatedTodos = todos.toSpliced(index, 1);
     setTodos(updatedTodos);
@@ -33,10 +33,9 @@ const useTodo = () => {
 
   const updateTodo = (targetId: string, key: string, newValue?: string) => {
     const index = todos.findIndex((item) => item.id === targetId);
-    if (handleInvalidIndex(index)) return;
+    if (handleInvalidId(index)) return;
     const todo = todos[index];
     const { id, value, isDone } = todo;
-    console.log('updatedTodo todo', todo.isDone);
 
     switch (key) {
       case 'value': {
