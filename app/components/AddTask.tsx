@@ -1,10 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-import useTodo from '../hooks/useTodo';
+import useTodoLocalStorage from '../hooks/useTodoLocalStorage';
 
 export default function InputField() {
   const [value, setValue] = useState<string>('');
-  const { addTodo } = useTodo();
+  const { addTodo } = useTodoLocalStorage();
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);

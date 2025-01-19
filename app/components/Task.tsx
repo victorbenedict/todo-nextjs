@@ -1,7 +1,7 @@
 'use client';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import useTodo from '../hooks/useTodo';
+import useTodoLocalStorage from '../hooks/useTodoLocalStorage';
 import CheckButton from './CheckButton';
 import DeleteButton from './DeleteButton';
 
@@ -14,7 +14,7 @@ interface TaskProp {
 export function Task({ id, value, isDone }: TaskProp) {
   const [isClient, setIsClient] = useState(false);
   const [todoText, setTodoText] = useState<string>(value || '');
-  const { deleteTodo, updateTodo } = useTodo();
+  const { deleteTodo, updateTodo } = useTodoLocalStorage();
   const debouncedUpdateTodo = useDebouncedCallback((todoText) => {
     updateTodo(id, 'value', todoText);
   }, 1000);

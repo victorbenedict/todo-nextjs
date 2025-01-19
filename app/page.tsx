@@ -1,11 +1,11 @@
 'use client';
 import AddTask from './components/AddTask';
 import { Task } from './components/Task';
-import useTodo from './hooks/useTodo';
+import useTodoLocalStorage from './hooks/useTodoLocalStorage';
 import { Todo } from './types';
 
 export default function Home() {
-  const { todos } = useTodo();
+  const { todos } = useTodoLocalStorage();
 
   return (
     <>

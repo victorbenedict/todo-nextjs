@@ -11,7 +11,7 @@ const handleInvalidId = (index: number, message = 'Todo ID not found') => {
   return false;
 };
 
-const useTodo = () => {
+const useTodoLocalStorage = () => {
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', sampleData);
 
   const addTodo = (value: string) => {
@@ -56,4 +56,4 @@ const useTodo = () => {
   return { todos, setTodos, addTodo, deleteTodo, updateTodo };
 };
 
-export default useTodo;
+export default useTodoLocalStorage;
